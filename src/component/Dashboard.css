@@ -1,0 +1,12 @@
+#airports{
+    margin-top: 20vh;
+}
+
+#airports h5 {
+    margin-bottom: 50px
+}
+
+.grid-view button{
+    width: 100%;
+    outline: none;
+}

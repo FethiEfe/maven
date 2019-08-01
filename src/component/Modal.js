@@ -18,13 +18,14 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import "./Modal.css"
 
 
 class Modal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 0,
+            value: "",
             minutes: "",
             departureData: [],
             arrivalData: []
@@ -64,14 +65,15 @@ class Modal extends Component {
     render() {
         const { value, departureData, arrivalData} = this.state
         return (
-            <div>
+            <div >
                 <Dialog open={this.props.open} onClose={this.props.handleClose} >
-                    <DialogTitle>{this.props.airportICAO}</DialogTitle>
-                    <div>
+                    
+                    <div id = "input-div">
                         <label>Please enter a value to display departing and arriving flights in the last * minutes</label> 
                         <input name = "minutes"
                                value = {this.state.minutes}
-                               onChange = {this.handleChange}/>
+                               onChange = {this.handleChange}
+                               placeholder = "100 mins"/>
                         <button onClick = {this.handleClick}>Enter</button>
                     </div>
                     <DialogContent>
@@ -83,8 +85,6 @@ class Modal extends Component {
                         </AppBar>
                         {value === 0 && <Departure departureData = {departureData}/>}
                         {value === 1 && <Arrival arrivalData = {arrivalData} />}
-
-
                     </DialogContent>
                     <DialogActions>
                         <Button color="primary" onClick={this.props.handleClose}>
