@@ -86,7 +86,7 @@ class Modal extends Component {
                     </div>
 
                     {/* Loading animation till data is received */}
-                    {isLoading ? <div id="loading"></div> : null}
+                    {isLoading ? <div className="loading"></div> : null}
 
                     {/* Show error here */}
                     {anyError ? <div className="alert alert-danger" role="alert" style={{ padding: "0 10px 0 10px", textAlign: "center" }}>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios"
-import { withRouter } from "react-router-dom"
+import { withRouter, Redirect } from "react-router-dom"
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -12,7 +12,6 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            isLoggedIn: false,
             anyError: false
         }
     };
@@ -27,11 +26,11 @@ class Login extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const { username, password } = this.state;
+
         axios.post("/user/login", { username, password })
             .then(() => {
                 this.props.history.push({
-                    pathname: '/dashboard',
-                    state: username
+                    pathname: '/dashboard'
                 })
             })
             .catch(() => {
@@ -41,8 +40,9 @@ class Login extends Component {
             });
     };
 
+
     render() {
-        console.log(this.props.location.state)
+        
         return (
             <Container component="main" maxWidth="xs">
 
