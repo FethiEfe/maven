@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
 import axios from "axios"
-import Dashboard from "./Dashboard"
-import { Redirect, withRouter } from "react-router-dom"
-import Avatar from '@material-ui/core/Avatar';
+import { withRouter } from "react-router-dom"
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-
-// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-
-
 import Container from '@material-ui/core/Container';
 
 class Login extends Component {
@@ -20,6 +13,7 @@ class Login extends Component {
             username: "",
             password: "",
             isLoggedIn: false,
+            anyError: false
         }
     };
 
@@ -40,23 +34,23 @@ class Login extends Component {
                     state: username
                 })
             })
-            .catch(err => {
-                console.log(err)
+            .catch(() => {
+                this.setState({
+                    anyError:true
+                })
             });
     };
 
     render() {
+    
         return (
             <Container component="main" maxWidth="xs">
 
-                <div style={{ marginTop: "200px",  }}>
-
-                  
-                    <img src="https://png.pngtree.com/svg/20170831/d323f01e9c.svg" style={{ width: "50px"}} />
-
-               
-
+                <div style={{ marginTop: "200px"}}>
                     <Typography component="h1" variant="h5" style={{ textAlign: "center" }}>
+                        <img src="https://png.pngtree.com/svg/20170831/d323f01e9c.svg" 
+                             style={{ width: "50px", marginLeft: "20px"}} 
+                             alt = "login icon"/>
                         Sign In
                     </Typography>
 
@@ -68,9 +62,9 @@ class Login extends Component {
                             fullWidth
                             id="username"
                             label="username"
-                            name="username"
                             autoComplete="username"
                             autoFocus
+                            name="username"
                             value={this.state.username}
                             onChange={this.handleChange}
                         />
@@ -79,21 +73,25 @@ class Login extends Component {
                             margin="normal"
                             required
                             fullWidth
-                            name="password"
                             label="Password"
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            name="password"
                             value={this.state.password}
                             onChange={this.handleChange}
                         />
+                        {this.state.anyError ? 
+                            <div className="alert alert-danger" role="alert" style = {{padding:"0 10px 0 10px", textAlign: "center"}}>
+                                            Username or Password Incorrect!!
+                            </div>
+                        : null}
 
                         <Button
                             type="submit"
                             fullWidth
                             variant="contained"
                             color="primary"
-
                         >
                             Sign In
                         </Button>

@@ -1,0 +1,21 @@
+#airports{
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#airports h5 {
+    margin-bottom: 50px
+}
+#signout-icon{
+    margin-bottom:10vh;
+    width: 40px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+.grid-view button{
+    width: 100%;
+    outline: none;
+}
