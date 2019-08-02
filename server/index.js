@@ -4,7 +4,7 @@ const session = require("express-session")
 const app = express();
 
 const controller = require("./controller")
-var PORT = process.env.PORT || 5000;
+var PORT = process.env.PORT || 3001;
 const {SECRET_SESSION} = process.env
 
 app.use(express.static('client'));
