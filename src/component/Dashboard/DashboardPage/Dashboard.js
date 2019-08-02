@@ -57,6 +57,7 @@ class Dashboard extends Component {
     if (!this.props.location.state) {
       return <Redirect to="/" />
     }
+    console.log(this.props.location.state)
     // loop through the airports array
     const airport = airports.map((element, index) => {
       return (

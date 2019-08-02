@@ -42,7 +42,7 @@ class Login extends Component {
     };
 
     render() {
-    
+        console.log(this.props.location.state)
         return (
             <Container component="main" maxWidth="xs">
 
